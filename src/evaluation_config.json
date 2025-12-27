@@ -1,0 +1,9 @@
+[
+    {
+      "id": "",
+      "query": "",
+      "expected_contains": [""],
+      "expected_tool": ["kb_retrieve"],
+      "category": ""
+    } 
+]
