@@ -71,11 +71,11 @@ When a user submits a question:
 
   #### Uses three independent signals to detect hallucination
 
-  **i) Word overlap** : Checks how much of the answer appears in retrieved documents
+  **i) Word overlap** : Measures lexical overlap between the generated answer and retrieved knowledge-base documents to verify explicit grounding.
 
-  **ii) Semantic similarity** : Uses sentence embeddings to compare meaning
+  **ii) Semantic similarity** : Uses sentence embeddings from the model all-MiniLM-L6-v2 to compare the semantic meaning of the answer against retrieved content, capturing paraphrased or implicitly grounded responses.
 
-  **iii) LLM grounding judge** : A separate AI model decides if the answer is supported by documents
+  **iii) LLM grounding judge** : A separate AI [Here used anthropic claude model] decides if the answer is supported by documents
 
   These signals are combined conservatively to avoid false trust.
 
@@ -92,7 +92,7 @@ When a user submits a question:
   Each test produces a structured record containing: Query and answer, Hallucination results, Quality scores, Tool correctness
   These records are logged to dashboards for easy evaluation
 
-  *All evaluation results are persisted to a local SQLite DB and reflected in the Streamlit dashboard in near real time. In production or product-based environment, this storage layer can be seamlessly replaced with a managed solution such as Amazon RDS for long-term analytics or       Amazon CloudWatch for centralized logging, without changing the evaluation logic itself*
+  *All evaluation results are persisted to a local SQLite DB and reflected in the Streamlit dashboard in near real time. In production or product-based environment, this storage layer can be seamlessly replaced with a managed solution such as Amazon RDS for long-term analytics or Amazon CloudWatch for centralized logging, without changing the evaluation logic itself*
 
   <img width="1432" height="579" alt="image" src="https://github.com/user-attachments/assets/02774752-9cee-4302-a084-fee499df97b7" />
 
