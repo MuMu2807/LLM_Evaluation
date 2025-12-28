@@ -17,10 +17,10 @@ from sat_token import get_sat_token
 # CONFIG
 # =====================================================
 REGION = "us-east-1"
-KB_ID = "<>"
+KB_ID = os.getenv("BEDROCK_KB_ID")
 
-MODEL_ID = "gpt-4o"
-API_BASE = "<>"
+MODEL_ID = os.getenv("MODEL")
+API_BASE = os.getenv("API_BASE")
 
 INPUT_PRICE_PER_1K = float(os.getenv("MODEL_INPUT_USD_PER_1K", "0.01"))
 OUTPUT_PRICE_PER_1K = float(os.getenv("MODEL_OUTPUT_USD_PER_1K", "0.03"))
@@ -29,7 +29,7 @@ DB_DEFAULT_PATH = "logs.db"
 
 LAST_RETRIEVED_DOCS: List[Dict[str, Any]] = []
 
-LOG_GROUP_NAME = "/<>/<>"
+LOG_GROUP_NAME = os.getenv("LOG_GROUP_NAME")
 
 
 def todays_log_stream() -> str:
